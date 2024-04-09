@@ -192,21 +192,22 @@ const numberHandlerExercise2 = {
       // if yes the first number is rounded off and appended to new string
       // the string is then converted to number 
 
-      num = [1.5, 1.3, 2.6]
+      num = [1.5, 1.3, 2.6, 20.6, 2.90, 3000.99]
 
       console.log("Before rounding off: ", num)
 
-      for (let i = 0 ; i < num.length; i++) {
-        
-        let s = String(num[i]) // conveting number  to String
-        
-        if ( s[2] >= 5 ){ // whether the number after decimal is greater than or equal to 5
-          let new_num = ''
-          new_num += String((Number(s[0]) + 1))
-          new_num += '.0'
+      for (let i = 0; i < num.length; i++){
 
-          num[i] = parseInt(new_num) // converting and placing back to numbers array
+        let s = String(num[i])
+        split_arr = s.split(".")
+
+        if (split_arr[1][0] >= 5){
+          let new_num = ''
+          new_num = String(Number(split_arr[0]) + 1)
+          new_num += '.0'
+          num[i] = parseInt(new_num)
         }
+
       }
 
       console.log("After rounding off: " ,num)
@@ -259,7 +260,7 @@ const numberHandlerExercise2 = {
     }
   };
 
-  // Test the number methods
+  // // Test the number methods
   console.log('Are all numbers prime:', numberHandlerExercise2.checkPrimeNumbers());
   console.log('Greatest Common Divisor (GCD):', numberHandlerExercise2.findGCD());
   console.log('Least Common Multiple (LCM):', numberHandlerExercise2.findLCM());
